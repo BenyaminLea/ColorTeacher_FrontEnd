@@ -1,0 +1,15 @@
+import React from 'react';
+
+export const UserContext = React.createContext({
+    user: {
+        username: "hi",
+        email: "bye",
+        fName: "im",
+        lName: "a mock",
+        about: "abouttttttttt",
+        rank: "7",
+        lastPlayed: "1h ago",
+        totalPoints: "1563",
+        gold: "48963"
+    },
+});
