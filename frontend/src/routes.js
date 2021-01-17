@@ -25,6 +25,8 @@ import Maps from "views/Map.js";
 import UserPage from "views/User.js";
 import UpgradeToPro from "views/Upgrade.js";
 import Play from "./components/custom/Test";
+import LandingPage from "components/LandingPage/LandingPage";
+import SignUp from "components/SignUp/SignUp";
 
 var routes = [
   {
@@ -48,7 +50,13 @@ var routes = [
     component: UserPage,
     layout: "/admin",
   },
-
+  {
+    path: "/sign-up",
+    name: "Sign Up",
+    icon: "nc-icon nc-single-02",
+    component: SignUp,
+    layout: "/admin",
+  },
 
 
   // {
