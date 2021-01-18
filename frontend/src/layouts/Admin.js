@@ -84,7 +84,7 @@ class Dashboard extends React.Component {
                 return (
                   <ProtectedRoute
                     exact
-                    path={prop.path}
+                    path={prop.layout + prop.path}
                     component={prop.component}
                     key={key}
                   />
@@ -96,7 +96,7 @@ class Dashboard extends React.Component {
               {routes.map((prop, key) => {
                 return (
                   <Route
-                    path={prop.path}
+                    path={prop.layout + prop.path}
                     component={prop.component}
                     key={key}
                   />

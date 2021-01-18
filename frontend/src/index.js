@@ -28,6 +28,7 @@ import "perfect-scrollbar/css/perfect-scrollbar.css";
 
 import AdminLayout from "layouts/Admin.js";
 import SignUp from "components/SignUp/SignUp";
+import ProtectedRoute from "components/custom/ProtectedRoute";
 
 const hist = createBrowserHistory();
 
@@ -37,10 +38,8 @@ ReactDOM.render(
       {/* <Route path="/">
         <LandingPage />
       </Route> */}
-      {/* <Route path="/sign-up" render={(props) => <AdminLayout {...props} />} />
-      <Redirect to="/sign-up" /> */}
-      <Route path="/" render={(props) => <AdminLayout {...props} />} />
-      <Redirect to="/" />
+      <Route path="/admin" render={(props) => <AdminLayout {...props} />} />
+      <Redirect to="/admin/main" />
     </Switch>
   </Router>,
   document.getElementById("root")

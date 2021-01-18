@@ -5,7 +5,7 @@ import Game from "./components/custom/Game";
 
 var protectedRoutes = [
     {
-        path: "/",
+        path: "/main",
         name: "Dashboard",
         icon: "nc-icon nc-bank",
         component: Dashboard,
