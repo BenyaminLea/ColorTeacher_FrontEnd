@@ -40,7 +40,7 @@ var routes = [
     path: "/play",
     name: "Play",
     icon: "nc-icon nc-diamond",
-    component: Play,
+    component: GameLanding,
     layout: "/admin",
   },
   {
