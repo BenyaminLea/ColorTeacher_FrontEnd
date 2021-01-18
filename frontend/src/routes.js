@@ -24,34 +24,14 @@ import TableList from "views/Tables.js";
 import Maps from "views/Map.js";
 import UserPage from "views/User.js";
 import UpgradeToPro from "views/Upgrade.js";
-import Play from "./components/custom/Test";
+import Game from "./components/custom/Game";
 import LandingPage from "components/LandingPage/LandingPage";
 import SignUp from "components/SignUp/SignUp";
 
 var routes = [
+
   {
-    path: "/dashboard",
-    name: "Dashboard",
-    icon: "nc-icon nc-bank",
-    component: Dashboard,
-    layout: "/admin",
-  },
-  {
-    path: "/play",
-    name: "Play",
-    icon: "nc-icon nc-diamond",
-    component: GameLanding,
-    layout: "/admin",
-  },
-  {
-    path: "/user-page",
-    name: "User Profile",
-    icon: "nc-icon nc-single-02",
-    component: UserPage,
-    layout: "/admin",
-  },
-  {
-    path: "/sign-up",
+    path: "/",
     name: "Sign Up",
     icon: "nc-icon nc-single-02",
     component: SignUp,
