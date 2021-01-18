@@ -1,3 +1,4 @@
+import { postLogin } from "components/api/api";
 import React, {useState} from "react";
 import { Button, Form, Card } from "react-bootstrap";
 
@@ -10,6 +11,7 @@ export default function Login() {
     event.preventDefault()
     const loginObj = {email: userEmail, password: userPassword}
     console.log(loginObj);
+    postLogin('http://localhost:5000/api/login/', loginObj)
   }
 
   return (
