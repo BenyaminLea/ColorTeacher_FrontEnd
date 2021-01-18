@@ -12,7 +12,8 @@ export default function SignUp() {
   const [phoneNumber, setPhoneNumber] = useState("");
   const [username, setUsername] = useState("");
 
-  function handleOnSubmit(event) {
+
+  async function handleOnSubmit(event) {
     event.preventDefault();
     if (passwordConf === password) {
       const newUser = {
@@ -24,7 +25,8 @@ export default function SignUp() {
         password: password,
         password2: passwordConf
       };
-        postSignUp("http://localhost:5000/api/users/", newUser)
+      const response = await postSignUp("http://localhost:5000/api/users/", newUser);
+      console.log(response);
     } else {
       alert("Passwords do not match")
     }
@@ -36,14 +38,14 @@ export default function SignUp() {
         <Card className="d-flex align-items-center justify-self-center mt-5 bg-transparent">
           <Card.Body>
             <Form onSubmit={(event) => handleOnSubmit(event)}>
-            <Form.Group id="username">
+              <Form.Group id="username">
                 <Form.Label>User Name</Form.Label>
                 <Form.Control
                   type="text"
                   required
                   onChange={(event) => setUsername(event.target.value)}
                 />
-                </Form.Group>
+              </Form.Group>
               <Form.Group id="first-name">
                 <Form.Label>First Name</Form.Label>
                 <Form.Control
