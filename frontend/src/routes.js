@@ -27,6 +27,7 @@ import UpgradeToPro from "views/Upgrade.js";
 import Play from "./components/custom/Test";
 import LandingPage from "components/LandingPage/LandingPage";
 import SignUp from "components/SignUp/SignUp";
+import Login from "components/Login/Login";
 
 var routes = [
   {
@@ -51,13 +52,12 @@ var routes = [
     layout: "/admin",
   },
   {
-    path: "/sign-up",
-    name: "Sign Up",
-    icon: "nc-icon nc-single-02",
-    component: SignUp,
+    path: "/landing-page",
+    name: "Home",
+    icon: "nc-icon nc-laptop",
+    component: LandingPage,
     layout: "/admin",
   },
-
 
   // {
   //   path: "/icons",
