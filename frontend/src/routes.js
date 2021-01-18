@@ -32,11 +32,11 @@ import Login from "components/Login/Login";
 var routes = [
 
   {
-    path: "/main",
+    path: "/",
     name: "Home",
     icon: "nc-icon nc-laptop",
     component: LandingPage,
-    layout: "/admin",
+    layout: "",
   },
   // {
 

@@ -38,7 +38,7 @@ class Dashboard extends React.Component {
     this.state = {
       backgroundColor: "black",
       activeColor: "info",
-      loggedIn: false,
+      // loggedIn: false,
     };
     this.mainPanel = React.createRef();
   }
@@ -72,13 +72,13 @@ class Dashboard extends React.Component {
       <div className="wrapper">
         <Sidebar
           {...this.props}
-          routes={this.state.loggedIn ? protectedRoutes : routes}
+          routes={this.props.loggedIn ? protectedRoutes : routes}
           bgColor={this.state.backgroundColor}
           activeColor={this.state.activeColor}
         />
         <div className="main-panel" ref={this.mainPanel}>
           <DemoNavbar {...this.props} />
-          {this.state.loggedIn ?
+          {this.props.loggedIn ?
             <Switch>
               {protectedRoutes.map((prop, key) => {
                 return (
