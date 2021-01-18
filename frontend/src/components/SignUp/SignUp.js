@@ -16,7 +16,7 @@ export default function SignUp() {
     event.preventDefault();
     if (passwordConf === password) {
       const newUser = {
-        Username: username,
+        UserName: username,
         FirstName: firstName,
         LastName: lastName,
         email: email,
@@ -24,10 +24,9 @@ export default function SignUp() {
         password: password,
         password2: passwordConf
       };
-      console.log(newUser);
         postSignUp("http://localhost:5000/api/users/", newUser)
     } else {
-      console.log("Passwords do not match");
+      alert("Passwords do not match")
     }
   }
 

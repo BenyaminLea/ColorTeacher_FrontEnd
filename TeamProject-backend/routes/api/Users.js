@@ -30,7 +30,7 @@ router.get("/:id", (req,res)=>{
 //@ access Public
 
 router.post("/", (req, res) => {
-  res.send("register")
+  // res.send("register")
    const {UserName, FirstName, LastName, email, password, password2, Phone, type } = req.body;
  if (!email || !password || !password2 || !FirstName || !LastName||!UserName) {
      return res.status(400).json({ msg: "Please enter all required fields" });

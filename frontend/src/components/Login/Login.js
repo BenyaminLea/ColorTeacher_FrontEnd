@@ -10,7 +10,6 @@ export default function Login() {
   const handleOnSubmit = (event) => {
     event.preventDefault()
     const loginObj = {email: userEmail, password: userPassword}
-    console.log(loginObj);
     postLogin('http://localhost:5000/api/login/', loginObj)
   }
 
