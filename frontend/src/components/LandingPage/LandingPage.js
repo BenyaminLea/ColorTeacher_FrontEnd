@@ -3,6 +3,7 @@ import SignUp from "components/SignUp/SignUp";
 import { Link, Redirect } from "react-router-dom";
 import React, { useState } from "react";
 import Login from "../Login/Login";
+import { getUsers } from '../api/api'
 
 export default function LandingPage() {
   const [loginIsOpen, setLoginIsOpen] = useState(false);
