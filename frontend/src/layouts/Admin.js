@@ -27,6 +27,8 @@ import Sidebar from "components/Sidebar/Sidebar.js";
 import FixedPlugin from "components/FixedPlugin/FixedPlugin.js";
 
 import routes from "routes.js";
+import protectedRoutes from "protectedRoutes.js";
+import ProtectedRoute from "../components/custom/ProtectedRoute"
 
 var ps;
 
@@ -36,10 +38,12 @@ class Dashboard extends React.Component {
     this.state = {
       backgroundColor: "black",
       activeColor: "info",
+      loggedIn: false,
     };
     this.mainPanel = React.createRef();
   }
   componentDidMount() {
+    console.log(this.props);
     if (navigator.platform.indexOf("Win") > -1) {
       ps = new PerfectScrollbar(this.mainPanel.current);
       document.body.classList.toggle("perfect-scrollbar-on");
@@ -64,28 +68,44 @@ class Dashboard extends React.Component {
     this.setState({ backgroundColor: color });
   };
   render() {
-    console.log(this.props);
     return (
       <div className="wrapper">
         <Sidebar
           {...this.props}
-          routes={routes}
+          routes={this.state.loggedIn ? protectedRoutes : routes}
           bgColor={this.state.backgroundColor}
           activeColor={this.state.activeColor}
         />
         <div className="main-panel" ref={this.mainPanel}>
           <DemoNavbar {...this.props} />
-          <Switch>
-            {routes.map((prop, key) => {
-              return (
-                <Route
-                  path={prop.layout + prop.path}
-                  component={prop.component}
-                  key={key}
-                />
-              );
-            })}
-          </Switch>
+          {this.state.loggedIn ?
+            <Switch>
+              {protectedRoutes.map((prop, key) => {
+                return (
+                  <ProtectedRoute
+                    exact
+                    path={prop.path}
+                    component={prop.component}
+                    key={key}
+                  />
+                );
+              })}
+            </Switch>
+            :
+            <Switch>
+              {routes.map((prop, key) => {
+                return (
+                  <Route
+                    path={prop.path}
+                    component={prop.component}
+                    key={key}
+                  />
+                );
+              })}
+
+            </Switch>
+
+          }
           {/* <Footer fluid /> */}
         </div>
         {/* <FixedPlugin

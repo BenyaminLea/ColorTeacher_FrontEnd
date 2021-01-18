@@ -24,13 +24,15 @@ import TableList from "views/Tables.js";
 import Maps from "views/Map.js";
 import UserPage from "views/User.js";
 import UpgradeToPro from "views/Upgrade.js";
-import Play from "./components/custom/Test";
+import Game from "./components/custom/Game";
 import LandingPage from "components/LandingPage/LandingPage";
 import SignUp from "components/SignUp/SignUp";
 import Login from "components/Login/Login";
 
 var routes = [
+
   {
+
     path: "/dashboard",
     name: "Dashboard",
     icon: "nc-icon nc-bank",
@@ -56,6 +58,11 @@ var routes = [
     name: "Home",
     icon: "nc-icon nc-laptop",
     component: LandingPage,
+
+    path: "/",
+    name: "Sign Up",
+    icon: "nc-icon nc-single-02",
+
     layout: "/admin",
   },
 
