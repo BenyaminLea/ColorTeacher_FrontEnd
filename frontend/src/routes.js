@@ -32,35 +32,35 @@ import Login from "components/Login/Login";
 var routes = [
 
   {
-    path: "/landing-page",
+    path: "/main",
     name: "Home",
     icon: "nc-icon nc-laptop",
     component: LandingPage,
     layout: "/admin",
   },
-  {
+  // {
 
-    path: "/dashboard",
-    name: "Dashboard",
-    icon: "nc-icon nc-bank",
-    component: Dashboard,
-    layout: "/admin",
-  },
-  {
-    path: "/play",
-    name: "Play",
-    icon: "nc-icon nc-diamond",
-    component: Game,
-    layout: "/admin",
-  },
-  {
-    path: "/user-page",
-    name: "User Profile",
-    icon: "nc-icon nc-single-02",
-    component: UserPage,
-    layout: "/admin",
-  },
-  
+  //   path: "/dashboard",
+  //   name: "Dashboard",
+  //   icon: "nc-icon nc-bank",
+  //   component: Dashboard,
+  //   layout: "/admin",
+  // },
+  // {
+  //   path: "/play",
+  //   name: "Play",
+  //   icon: "nc-icon nc-diamond",
+  //   component: Game,
+  //   layout: "/admin",
+  // },
+  // {
+  //   path: "/user-page",
+  //   name: "User Profile",
+  //   icon: "nc-icon nc-single-02",
+  //   component: UserPage,
+  //   layout: "/admin",
+  // },
+
 
   // {
   //   path: "/icons",
