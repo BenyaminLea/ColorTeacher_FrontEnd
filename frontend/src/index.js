@@ -37,8 +37,10 @@ ReactDOM.render(
       {/* <Route path="/">
         <LandingPage />
       </Route> */}
-      <Route path="/admin" render={(props) => <AdminLayout {...props} />} />
-      <Redirect to="/admin/dashboard" />
+      {/* <Route path="/sign-up" render={(props) => <AdminLayout {...props} />} />
+      <Redirect to="/sign-up" /> */}
+      <Route path="/" render={(props) => <AdminLayout {...props} />} />
+      <Redirect to="/" />
     </Switch>
   </Router>,
   document.getElementById("root")
