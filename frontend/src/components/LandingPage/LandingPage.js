@@ -1,35 +1,56 @@
-import { Button, Modal } from "react-bootstrap";
+import { Button, Modal, Navbar, Nav } from "react-bootstrap";
 import SignUp from "components/SignUp/SignUp";
+import { Link, Redirect } from "react-router-dom";
 import React, { useState } from "react";
-import Dashboard from "layouts/Admin";
-import Sidebar from "components/Sidebar/Sidebar";
-import routes from "routes";
-
+import Login from "../Login/Login";
 export default function LandingPage() {
-  const [isOpen, setIsOpen] = useState(false);
+  const [loginIsOpen, setLoginIsOpen] = useState(false);
+  const [SignUpIsOpen, setSignUpIsOpen] = useState(false);
 
-  const closeSignUpModal = () => {
-    setIsOpen(false);
+  const closeLoginModal = () => {
+    setLoginIsOpen(false);
   };
 
-  const openModal = () => {
-    setIsOpen(true);
+  const openLoginModal = () => {
+    setLoginIsOpen(true);
+  };
+
+  const closeSignUpModal = () => {
+    setSignUpIsOpen(false);
+  };
+
+  const openSignUpModal = () => {
+    setSignUpIsOpen(true);
   };
 
   return (
-      <>
-    <div className="mt-5">
-      <Button className="mt-5" onClick={openModal}>
-        Sign Up
-      </Button>
-    </div>
+    <>
+      <div className="mt-5 d-flex justify-content-center">
+        <Button variant="primary" className="mr-4 mt-5" onClick={openLoginModal}>
+          Login
+        </Button>
+        <Button variant="success" className="ml-4 mt-5" onClick={openSignUpModal}>
+          Sign Up
+        </Button>
+      </div>
       <Modal
+        className="modals"
         ariaHideApp={false}
-        isOpen={isOpen}
-        onRequestClose={closeSignUpModal}
+        show={loginIsOpen}
+        isOpen={loginIsOpen}
+        onHide={closeLoginModal}
+      >
+        <Login />
+      </Modal>
+      <Modal
+        className="modals"
+        ariaHideApp={false}
+        show={SignUpIsOpen}
+        isOpen={SignUpIsOpen}
+        onHide={closeSignUpModal}
       >
         <SignUp />
       </Modal>
-      </>
+    </>
   );
 }

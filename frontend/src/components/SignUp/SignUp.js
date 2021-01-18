@@ -19,7 +19,7 @@ export default function SignUp() {
         email: email,
         phoneNumber: phoneNumber,
         password: password,
-        isAdmin: false,
+        password2: passwordConf
       };
       console.log(newUser);
       //   postSignUp("http://localhost:5000/api/users/", newUser)

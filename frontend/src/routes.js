@@ -27,17 +27,44 @@ import UpgradeToPro from "views/Upgrade.js";
 import Game from "./components/custom/Game";
 import LandingPage from "components/LandingPage/LandingPage";
 import SignUp from "components/SignUp/SignUp";
+import Login from "components/Login/Login";
 
 var routes = [
 
   {
+
+    path: "/dashboard",
+    name: "Dashboard",
+    icon: "nc-icon nc-bank",
+    component: Dashboard,
+    layout: "/admin",
+  },
+  {
+    path: "/play",
+    name: "Play",
+    icon: "nc-icon nc-diamond",
+    component: Play,
+    layout: "/admin",
+  },
+  {
+    path: "/user-page",
+    name: "User Profile",
+    icon: "nc-icon nc-single-02",
+    component: UserPage,
+    layout: "/admin",
+  },
+  {
+    path: "/landing-page",
+    name: "Home",
+    icon: "nc-icon nc-laptop",
+    component: LandingPage,
+
     path: "/",
     name: "Sign Up",
     icon: "nc-icon nc-single-02",
-    component: SignUp,
+
     layout: "/admin",
   },
-
 
   // {
   //   path: "/icons",
