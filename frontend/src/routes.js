@@ -32,6 +32,13 @@ import Login from "components/Login/Login";
 var routes = [
 
   {
+    path: "/landing-page",
+    name: "Home",
+    icon: "nc-icon nc-laptop",
+    component: LandingPage,
+    layout: "/admin",
+  },
+  {
 
     path: "/dashboard",
     name: "Dashboard",
@@ -43,7 +50,7 @@ var routes = [
     path: "/play",
     name: "Play",
     icon: "nc-icon nc-diamond",
-    component: Play,
+    component: Game,
     layout: "/admin",
   },
   {
@@ -53,18 +60,7 @@ var routes = [
     component: UserPage,
     layout: "/admin",
   },
-  {
-    path: "/landing-page",
-    name: "Home",
-    icon: "nc-icon nc-laptop",
-    component: LandingPage,
-
-    path: "/",
-    name: "Sign Up",
-    icon: "nc-icon nc-single-02",
-
-    layout: "/admin",
-  },
+  
 
   // {
   //   path: "/icons",

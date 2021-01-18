@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Form, Button, Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { postSignUp } from '../api/api'
 
 export default function SignUp() {
   const [firstName, setFirstName] = useState("");
@@ -9,20 +10,22 @@ export default function SignUp() {
   const [password, setPassword] = useState("");
   const [passwordConf, setPasswordConf] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
+  const [username, setUsername] = useState("");
 
   function handleOnSubmit(event) {
     event.preventDefault();
     if (passwordConf === password) {
       const newUser = {
-        firstName: firstName,
-        lastName: lastName,
+        Username: username,
+        FirstName: firstName,
+        LastName: lastName,
         email: email,
-        phoneNumber: phoneNumber,
+        Phone: phoneNumber,
         password: password,
         password2: passwordConf
       };
       console.log(newUser);
-      //   postSignUp("http://localhost:5000/api/users/", newUser)
+        postSignUp("http://localhost:5000/api/users/", newUser)
     } else {
       console.log("Passwords do not match");
     }
@@ -34,6 +37,14 @@ export default function SignUp() {
         <Card className="d-flex align-items-center justify-self-center mt-5 bg-transparent">
           <Card.Body>
             <Form onSubmit={(event) => handleOnSubmit(event)}>
+            <Form.Group id="username">
+                <Form.Label>User Name</Form.Label>
+                <Form.Control
+                  type="text"
+                  required
+                  onChange={(event) => setUsername(event.target.value)}
+                />
+                </Form.Group>
               <Form.Group id="first-name">
                 <Form.Label>First Name</Form.Label>
                 <Form.Control
@@ -88,9 +99,6 @@ export default function SignUp() {
             </Form>
           </Card.Body>
         </Card>
-        <div className="w-100 text-center">
-          Already have an account? <Link to="/Login">Login</Link>
-        </div>
       </>
     </div>
   );
