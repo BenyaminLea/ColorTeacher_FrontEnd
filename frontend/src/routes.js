@@ -24,7 +24,8 @@ import TableList from "views/Tables.js";
 import Maps from "views/Map.js";
 import UserPage from "views/User.js";
 import UpgradeToPro from "views/Upgrade.js";
-import Play from "./components/custom/Test";
+import Game from "./components/custom/Game";
+import GameLanding from "components/custom/GameLanding";
 
 var routes = [
   {
@@ -38,7 +39,7 @@ var routes = [
     path: "/play",
     name: "Play",
     icon: "nc-icon nc-diamond",
-    component: Play,
+    component: GameLanding,
     layout: "/admin",
   },
   {
