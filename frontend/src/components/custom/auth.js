@@ -10,7 +10,6 @@ class Auth {
 
     logout(cb) {
         this.authenticated = false;
-        console.log("im here");
         cb();
     }
 

@@ -17,7 +17,7 @@
 
 */
 import { UserContext } from "context/UserContext";
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 // react plugin used to create charts
 import { Line, Pie } from "react-chartjs-2";
 // reactstrap components
@@ -39,7 +39,6 @@ import {
 
 function Dashboard(props) {
   const context = useContext(UserContext).user;
-
   return (
     <>
       <div className="content">

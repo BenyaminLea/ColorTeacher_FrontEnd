@@ -12,4 +12,5 @@ export const UserContext = React.createContext({
         totalPoints: "1563",
         gold: "48963"
     },
+    setUserInfo: function (info) { this.user = info }
 });
