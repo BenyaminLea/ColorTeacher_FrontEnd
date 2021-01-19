@@ -5,7 +5,7 @@ const results = require("../../models/results");
 router.get("/:id/scores", (req, res) => {
   results
     .find({ UserId: req.params.id })
-    .sort({ date: -1 })
+    .sort({ date: 1 })
     .then((scores) => res.json(scores));
 });
 
@@ -16,10 +16,11 @@ router.get("/:id/avgscore", (req, res) => {
     .then((scores) => {
       let avg = 0;
       for (let i = 0; i < scores.length; i++) {
-        avg = avg + scores[i];
+        avg = avg + scores[i].Score;
       }
       avg = avg / scores.length;
-      res.send(avg);
+      console.log(avg);
+      res.send({ average: avg });
     });
 });
 
@@ -54,6 +55,7 @@ router.post("/:id/score", (req, res) => {
     UserId,
     Score,
   });
+  console.log(newResult);
   newResult.save();
   res.send("Score saved");
 });
