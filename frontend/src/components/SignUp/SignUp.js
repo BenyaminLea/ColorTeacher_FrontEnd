@@ -25,8 +25,7 @@ export default function SignUp() {
         password: password,
         password2: passwordConf
       };
-      const response = await postSignUp("http://localhost:5000/api/users/", newUser);
-      console.log(response);
+      const response = await postSignUp(newUser);
     } else {
       alert("Passwords do not match")
     }

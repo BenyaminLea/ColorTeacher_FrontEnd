@@ -1,19 +1,21 @@
 import { postLogin } from "components/api/api";
-import React, { useState } from "react";
+import { UserContext } from "context/UserContext";
+import React, { useState, useContext } from "react";
 import { Button, Form, Card } from "react-bootstrap";
 import { withRouter } from "react-router";
 import auth from '../custom/auth';
 
 function Login(props) {
 
-  const [userEmail, setUserEmail] = useState('')
-  const [userPassword, setUserPassword] = useState('')
+  const [userEmail, setUserEmail] = useState('');
+  const [userPassword, setUserPassword] = useState('');
+  const context = useContext(UserContext);
 
   const handleOnSubmit = async (event) => {
     event.preventDefault()
     const loginObj = { email: userEmail, password: userPassword }
-    const response = await postLogin('http://localhost:5000/api/login/', loginObj);
-    console.log(response);
+    const response = await postLogin(loginObj);
+    context.setUserInfo(response.data.user);
     auth.login(() => {
       props.history.push(`/admin/main`);
     });
