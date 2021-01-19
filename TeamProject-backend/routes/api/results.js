@@ -57,3 +57,4 @@ router.post("/:id/score", (req, res) => {
   newResult.save();
   res.send("Score saved");
 });
+module.exports = router;
