@@ -24,7 +24,7 @@ import TableList from "views/Tables.js";
 import Maps from "views/Map.js";
 import UserPage from "views/User.js";
 import UpgradeToPro from "views/Upgrade.js";
-import Game from "../components/custom/Game";
+import Game from "../components/game/Game";
 import LandingPage from "components/LandingPage/LandingPage";
 import SignUp from "components/SignUp/SignUp";
 import Login from "components/Login/Login";

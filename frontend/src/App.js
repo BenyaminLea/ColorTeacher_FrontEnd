@@ -10,9 +10,9 @@ import "perfect-scrollbar/css/perfect-scrollbar.css";
 
 import AdminLayout from "layouts/Admin.js";
 import SignUp from "components/SignUp/SignUp";
-import ProtectedRoute from "components/custom/ProtectedRoute";
+import ProtectedRoute from "routes/ProtectedRoute";
 import { UserContext } from "context/UserContext";
-import auth from "./components/custom/auth";
+import auth from "./components/lib/auth";
 
 const hist = createBrowserHistory();
 

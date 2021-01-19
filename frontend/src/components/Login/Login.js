@@ -1,9 +1,9 @@
-import { postLogin } from "components/api/api";
+import { postLogin } from "components/lib/api";
 import { UserContext } from "context/UserContext";
 import React, { useState, useContext } from "react";
 import { Button, Form, Card } from "react-bootstrap";
 import { withRouter } from "react-router";
-import auth from '../custom/auth';
+import auth from '../lib/auth';
 
 function Login(props) {
 

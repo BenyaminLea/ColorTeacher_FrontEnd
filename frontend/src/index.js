@@ -28,7 +28,6 @@ import "perfect-scrollbar/css/perfect-scrollbar.css";
 import App from './App'
 import AdminLayout from "layouts/Admin.js";
 import SignUp from "components/SignUp/SignUp";
-import ProtectedRoute from "components/custom/ProtectedRoute";
 import { UserContext } from "context/UserContext";
 
 const hist = createBrowserHistory();

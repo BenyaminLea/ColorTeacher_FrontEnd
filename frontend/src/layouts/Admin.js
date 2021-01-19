@@ -28,7 +28,7 @@ import FixedPlugin from "components/FixedPlugin/FixedPlugin.js";
 
 import routes from "../routes/routes.js";
 import protectedRoutes from "../routes/protectedRoutes.js";
-import ProtectedRoute from "../components/custom/ProtectedRoute"
+import ProtectedRoute from "../routes/ProtectedRoute"
 
 var ps;
 
