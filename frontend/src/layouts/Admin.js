@@ -66,12 +66,13 @@ class Dashboard extends React.Component {
   handleBgClick = (color) => {
     this.setState({ backgroundColor: color });
   };
+
   render() {
     return (
       <div className="wrapper">
         <Sidebar
           {...this.props}
-          routes={this.props.loggedIn ? protectedRoutes : routes}
+          routes={this.props.user ? protectedRoutes : routes}
           bgColor={this.state.backgroundColor}
           activeColor={this.state.activeColor}
         />

@@ -1,5 +1,6 @@
 import React from 'react';
 
+
 export const UserContext = React.createContext({
     user: {
         username: "hi",
@@ -14,3 +15,15 @@ export const UserContext = React.createContext({
     },
     setUserInfo: function (info) { this.user = info }
 });
+
+// export const CurrentUserContext = React.createContext({
+//     username: "",
+//         email: "",
+//         fName: "",
+//         lName: "",
+//         about: "",
+//         rank: "",
+//         lastPlayed: "",
+//         totalPoints: "",
+//         gold: "",
+// })
