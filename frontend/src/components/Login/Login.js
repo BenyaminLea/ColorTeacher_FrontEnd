@@ -15,10 +15,12 @@ function Login(props) {
     event.preventDefault()
     const loginObj = { email: userEmail, password: userPassword }
     const response = await postLogin(loginObj);
+    localStorage.setItem('user', JSON.stringify(response.data.user))
     context.setUserInfo(response.data.user);
     auth.login(() => {
       props.history.push(`/admin/main`);
     });
+    window.location.reload()
   }
 
   return (
