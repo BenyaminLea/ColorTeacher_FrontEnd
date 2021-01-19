@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import ReactDOM from "react-dom";
 import { createBrowserHistory } from "history";
-import { Router, Route, Switch, Redirect } from "react-router-dom";
+import { Router, Route, Switch, Redirect, withRouter } from "react-router-dom";
 import LandingPage from "./components/LandingPage/LandingPage";
 import "bootstrap/dist/css/bootstrap.css";
 import "assets/scss/paper-dashboard.scss?v=1.2.0";
@@ -12,31 +12,37 @@ import AdminLayout from "layouts/Admin.js";
 import SignUp from "components/SignUp/SignUp";
 import ProtectedRoute from "components/custom/ProtectedRoute";
 import { UserContext } from "context/UserContext";
+import auth from "./components/custom/auth";
 
 const hist = createBrowserHistory();
 
-export default function App() {
-  const context = useContext(UserContext)
-  const [currentUser, setCurrentUser] = useState(undefined);
-
+function App(props) {
+  const context = useContext(UserContext);
+  const previouslyLogged = JSON.parse(localStorage.getItem("user"));
   useEffect(() => {
-    if ( currentUser === undefined && localStorage.getItem("user") ) {
-      setCurrentUser(JSON.parse(localStorage.getItem("user")));
+    console.log(context.user);
+    if (previouslyLogged) {
+      context.setUserInfo(previouslyLogged);
+      auth.login(() => {
+        props.history.push(`/admin/main`);
+      });
     }
-  }, [context])
+  }, []);
 
   return (
-    <Router history={hist}>
-      <Switch>
-        <Route
-          path="/admin"
-          render={(props) => <AdminLayout {...props} user={currentUser} />}
-        />
-        <Route
-          path="/"
-          render={(props) => <AdminLayout {...props} user={currentUser} />}
-        />
-      </Switch>
-    </Router>
+
+    <Switch>
+      <Route
+        path="/admin"
+        render={(props) => <AdminLayout {...props} user={context.user} />}
+      />
+      <Route
+        path="/"
+        render={(props) => <AdminLayout {...props} />}
+      />
+    </Switch>
+
   );
 }
+
+export default withRouter(App);

@@ -20,7 +20,7 @@ function Login(props) {
     auth.login(() => {
       props.history.push(`/admin/main`);
     });
-    window.location.reload()
+    // window.location.reload()
   }
 
   return (

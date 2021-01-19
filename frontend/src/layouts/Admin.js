@@ -26,8 +26,8 @@ import Footer from "components/Footer/Footer.js";
 import Sidebar from "components/Sidebar/Sidebar.js";
 import FixedPlugin from "components/FixedPlugin/FixedPlugin.js";
 
-import routes from "routes.js";
-import protectedRoutes from "protectedRoutes.js";
+import routes from "../routes/routes.js";
+import protectedRoutes from "../routes/protectedRoutes.js";
 import ProtectedRoute from "../components/custom/ProtectedRoute"
 
 var ps;
@@ -78,7 +78,7 @@ class Dashboard extends React.Component {
         />
         <div className="main-panel" ref={this.mainPanel}>
           <DemoNavbar {...this.props} />
-          {this.props.loggedIn ?
+          {this.props.user ?
             <Switch>
               {protectedRoutes.map((prop, key) => {
                 return (

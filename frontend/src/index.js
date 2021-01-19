@@ -34,17 +34,8 @@ import { UserContext } from "context/UserContext";
 const hist = createBrowserHistory();
 
 ReactDOM.render(
-  // <Router history={hist}>
-  //   <Switch>
-  //     {/* <Route path="/">
-  //       <LandingPage />
-  //     </Route> */}
-  //     <Route path="/admin" render={(props) => <AdminLayout {...props} loggedIn={true} />} />
-  //     <Route path="/" render={(props) => <AdminLayout {...props} loggedIn={false} />} />
-  //     {/* <Redirect to="/landing" /> */}
-  //     {/* <Redirect to="/admin/main" /> */}
-  //   </Switch>
-  // </Router>,
-  <App />,
+  <Router history={hist}>
+    <App />,
+  </Router>,
   document.getElementById("root")
 );
