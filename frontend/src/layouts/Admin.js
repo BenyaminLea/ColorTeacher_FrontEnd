@@ -26,9 +26,9 @@ import Footer from "components/Footer/Footer.js";
 import Sidebar from "components/Sidebar/Sidebar.js";
 import FixedPlugin from "components/FixedPlugin/FixedPlugin.js";
 
-import routes from "routes.js";
-import protectedRoutes from "protectedRoutes.js";
-import ProtectedRoute from "../components/custom/ProtectedRoute"
+import routes from "../routes/routes.js";
+import protectedRoutes from "../routes/protectedRoutes.js";
+import ProtectedRoute from "../routes/ProtectedRoute"
 
 var ps;
 
@@ -66,18 +66,19 @@ class Dashboard extends React.Component {
   handleBgClick = (color) => {
     this.setState({ backgroundColor: color });
   };
+
   render() {
     return (
       <div className="wrapper">
         <Sidebar
           {...this.props}
-          routes={this.props.loggedIn ? protectedRoutes : routes}
+          routes={this.props.user ? protectedRoutes : routes}
           bgColor={this.state.backgroundColor}
           activeColor={this.state.activeColor}
         />
         <div className="main-panel" ref={this.mainPanel}>
           <DemoNavbar {...this.props} />
-          {this.props.loggedIn ?
+          {this.props.user ?
             <Switch>
               {protectedRoutes.map((prop, key) => {
                 return (

@@ -1,7 +1,7 @@
 
 import Dashboard from "views/Dashboard.js";
 import UserPage from "views/User.js";
-import Game from "./components/custom/Game";
+import Game from "../components/game/Game";
 
 var protectedRoutes = [
     {
