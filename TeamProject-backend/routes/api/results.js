@@ -1,12 +1,32 @@
 const express = require("express");
 const router = express.Router();
 const results = require("../../models/results");
+const users = require("../../models/users");
+
+router.get("/", (req, res) => {
+  results.find().then((results) => res.json(results));
+});
 
 router.get("/:id/scores", (req, res) => {
   results
     .find({ UserId: req.params.id })
     .sort({ date: 1 })
     .then((scores) => res.json(scores));
+});
+
+router.get("/top3", (req, res) => {
+  users
+    .find({})
+    .sort({ averageScore: -1 })
+    .limit(3)
+    .then((users) => res.json(users));
+});
+
+router.get("/ranking", (req, res) => {
+  users
+    .find({})
+    .sort({ averageScore: -1 })
+    .then((users) => res.json(users));
 });
 
 router.get("/:id/avgscore", (req, res) => {
@@ -19,7 +39,6 @@ router.get("/:id/avgscore", (req, res) => {
         avg = avg + scores[i].Score;
       }
       avg = avg / scores.length;
-      console.log(avg);
       res.send({ average: avg });
     });
 });
@@ -55,8 +74,23 @@ router.post("/:id/score", (req, res) => {
     UserId,
     Score,
   });
-  console.log(newResult);
   newResult.save();
+  let avg = Score;
+  results
+    .find({ UserId: req.params.id })
+    .sort({ date: -1 })
+    .then((scores) => {
+      for (let i = 0; i < scores.length; i++) {
+        avg = avg + scores[i].Score;
+      }
+      avg = avg / (scores.length + 1);
+    })
+    .then(() => {
+      users.findOne({ _id: req.params.id }).then((user) => {
+        user.averageScore = avg;
+        user.save();
+      });
+    });
   res.send("Score saved");
 });
 module.exports = router;

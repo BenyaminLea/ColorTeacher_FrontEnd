@@ -9,21 +9,20 @@ const users = require("../../models/users");
 //@ desc Get all pets
 //@ access Public
 
-router.get('/', (req,res)=>{
-    users.find()
-    .sort({date:-1})
-    .then(users=> res.json(users))
-    
-})
+router.get("/", (req, res) => {
+  users
+    .find()
+    .sort({ date: -1 })
+    .then((users) => res.json(users));
+});
 
 //@ Get request to api/Users by id
 //@ desc Get all User by id
 //@ access Private
 
-router.get("/:id", (req,res)=>{
-  users.findOne({token: req.params.id})
-  .then(user=> res.json(user))
-})
+router.get("/:id", (req, res) => {
+  users.findOne({ _id: req.params.id }).then((user) => res.json(user));
+});
 
 //@ POST request to api/Users
 //@ desc POST User
@@ -31,10 +30,26 @@ router.get("/:id", (req,res)=>{
 
 router.post("/", (req, res) => {
   // res.send("register")
-   const {UserName, FirstName, LastName, email, password, password2, Phone, type } = req.body;
- if (!email || !password || !password2 || !FirstName || !LastName||!UserName) {
-     return res.status(400).json({ msg: "Please enter all required fields" });
-   }
+  const {
+    UserName,
+    FirstName,
+    LastName,
+    email,
+    password,
+    password2,
+    Phone,
+    type,
+  } = req.body;
+  if (
+    !email ||
+    !password ||
+    !password2 ||
+    !FirstName ||
+    !LastName ||
+    !UserName
+  ) {
+    return res.status(400).json({ msg: "Please enter all required fields" });
+  }
   users.findOne({ email }).then((user) => {
     if (user) {
       return res.status(400).json({ msg: "User already exists" });
@@ -48,7 +63,7 @@ router.post("/", (req, res) => {
       password,
       password2,
       Phone,
-      type
+      type,
     });
     // create salt&hash
     bcrypt.genSalt(10, (err, salt) => {
@@ -72,7 +87,7 @@ router.post("/", (req, res) => {
                   email: user.email,
                   password2: user.password2,
                   Phone: user.Phone,
-                  type: user.type
+                  type: user.type,
                 },
               });
             }
