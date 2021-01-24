@@ -23,6 +23,7 @@ import { Nav } from "reactstrap";
 import PerfectScrollbar from "perfect-scrollbar";
 
 import logo from "logo.svg";
+import Logout from "components/Logout/Logout";
 
 var ps;
 
@@ -95,6 +96,7 @@ class Sidebar extends React.Component {
                 </li>
               );
             })}
+            <Logout />
           </Nav>
         </div>
       </div>
