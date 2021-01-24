@@ -17,6 +17,8 @@
     "react-router": "5.2.0",
     "react-router-dom": "5.2.0",
     "react-scripts": "3.4.1",
+    "react-speech": "^1.0.2",
+    "react-webcam": "^5.2.2",
     "reactstrap": "8.4.1"
   },
   "scripts": {

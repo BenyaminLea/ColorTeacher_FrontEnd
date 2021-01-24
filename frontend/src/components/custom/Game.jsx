@@ -1,4 +1,7 @@
 import React, { useState } from "react";
+import Speech from 'react-speech';
+import TakePicture from "../TakePicture/TakePicture";
+
 
 import {
   Card,
@@ -30,9 +33,10 @@ function Game(props) {
                       <div className="numbers" style={{ textAlign: "left" }}>
                         <p className="card-category">Queston 1 out of 10</p>
                         <CardTitle tag="p">
-                          What is the name of this color?
-                          <div style={{ backgroundColor: "red", height: "10rem", width: "10rem", borderRadius: "6px", margin: "1rem 0" }}>
-
+                          <Speech text="Bring me something blue!"/>
+                           <br></br>
+                           <TakePicture/>
+                          <div style={{ backgroundColor: "red", height: "10rem", width: "10rem", borderRadius: "6px", margin: "1rem 0" }}>  
                           </div>
                         </CardTitle>
                         <p />
