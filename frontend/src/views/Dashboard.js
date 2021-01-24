@@ -53,7 +53,7 @@ function Dashboard(props) {
       const max = await getScores(`http://localhost:5000/api/results/${context.id}/maxscore`)
       const rank = await getScores(`http://localhost:5000/api/results/ranking`)
       setScores({
-        average: avg.average ? avg.average.toFixed(2) : '',
+        average: avg.average ? avg.average.toFixed(2) : undefined,
         maxScore: max.Score,
         ranking: rank,
         userScores: allUserScores
@@ -103,7 +103,7 @@ function Dashboard(props) {
                     <div className="numbers">
                       <p className="card-category">Last Played</p>
                       <CardTitle tag="p">
-                        {scores.userScores.length > 0 ? new Date(scores.userScores[0].date).toLocaleString() : <></>}
+                        {scores.userScores.length > 0 ? new Date(scores.userScores[0].date).toLocaleString() : "You haven't played yet"}
                       </CardTitle>
                       <p />
                     </div>
@@ -129,7 +129,7 @@ function Dashboard(props) {
                   <Col md="8" xs="7">
                     <div className="numbers">
                       <p className="card-category">Average Score</p>
-                      <CardTitle tag="p">{scores.average !== undefined ? scores.average : <></>}</CardTitle>
+                      <CardTitle tag="p">{scores.average !== undefined ? scores.average : "No scores yet"}</CardTitle>
                       <p />
                     </div>
                   </Col>
@@ -155,7 +155,7 @@ function Dashboard(props) {
                   <Col md="8" xs="7">
                     <div className="numbers">
                       <p className="card-category">Max Score</p>
-                      <CardTitle tag="p">{scores.maxScore !== undefined ? scores.maxScore : <></>}</CardTitle>
+                      <CardTitle tag="p">{scores.maxScore !== undefined ? scores.maxScore : "No scores yet"}</CardTitle>
                       <p />
                     </div>
                   </Col>
