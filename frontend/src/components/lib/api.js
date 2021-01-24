@@ -10,8 +10,9 @@ export async function getUsers(url) {
 
 export async function getScores(url) {
     const response = await axios.get(url)
-    console.log(response);
-    return response
+    const data = response.data
+    console.log(data);
+    return data
 }
 
 export async function postSignUp(user = {}) {
