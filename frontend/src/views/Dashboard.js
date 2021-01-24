@@ -53,7 +53,7 @@ function Dashboard(props) {
       const max = await getScores(`http://localhost:5000/api/results/${context.id}/maxscore`)
       const rank = await getScores(`http://localhost:5000/api/results/ranking`)
       setScores({
-        average: avg.average.toFixed(2),
+        average: avg.average ? avg.average.toFixed(2) : '',
         maxScore: max.Score,
         ranking: rank,
         userScores: allUserScores
@@ -129,7 +129,7 @@ function Dashboard(props) {
                   <Col md="8" xs="7">
                     <div className="numbers">
                       <p className="card-category">Average Score</p>
-                      <CardTitle tag="p">{scores.average}</CardTitle>
+                      <CardTitle tag="p">{scores.average !== undefined ? scores.average : <></>}</CardTitle>
                       <p />
                     </div>
                   </Col>
@@ -155,7 +155,7 @@ function Dashboard(props) {
                   <Col md="8" xs="7">
                     <div className="numbers">
                       <p className="card-category">Max Score</p>
-                      <CardTitle tag="p">{scores.maxScore}</CardTitle>
+                      <CardTitle tag="p">{scores.maxScore !== undefined ? scores.maxScore : <></>}</CardTitle>
                       <p />
                     </div>
                   </Col>
