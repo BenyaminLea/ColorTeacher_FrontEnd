@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Form, Button, Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import { postSignUp } from '../api/api'
+import { postSignUp } from '../lib/api'
 
 export default function SignUp() {
   const [firstName, setFirstName] = useState("");
