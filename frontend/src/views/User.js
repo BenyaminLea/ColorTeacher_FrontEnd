@@ -70,7 +70,7 @@ function User(props) {
                       <FormGroup>
                         <label>Username</label>
                         <Input
-                          // defaultValue={context.username}
+                          defaultValue={context.UserName}
                           placeholder="Username"
                           type="text"
                           onChange={handleChange}
@@ -87,7 +87,7 @@ function User(props) {
                         <Input
                           placeholder="Email"
                           type="email"
-                          // defaultValue={context.email}
+                          defaultValue={context.email}
                           onChange={handleChange}
                           value={formFields.email}
                           name="email"
@@ -100,7 +100,7 @@ function User(props) {
                       <FormGroup>
                         <label>First Name</label>
                         <Input
-                          // defaultValue={context.fName}
+                          defaultValue={context.FirstName}
                           placeholder="First Name"
                           type="text"
                           onChange={handleChange}
@@ -113,7 +113,7 @@ function User(props) {
                       <FormGroup>
                         <label>Last Name</label>
                         <Input
-                          // defaultValue={context.lName}
+                          defaultValue={context.LastName}
                           placeholder="Last Name"
                           type="text"
                           onChange={handleChange}

@@ -12,7 +12,7 @@ export default function Logout() {
     }
 
     return (
-        <Button variant="danger" id="log-out-button" style={{borderRadius: 50}} onClick={() => handleLogOut()}>
+        <Button variant="danger" id="log-out-button" style={{borderRadius: 100}} onClick={() => handleLogOut()}>
             Log Out
         </Button>
     )

@@ -16,6 +16,7 @@
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 */
+import { getScores } from "components/lib/api";
 import { UserContext } from "context/UserContext";
 import React, { useContext, useEffect } from "react";
 // react plugin used to create charts
@@ -39,6 +40,7 @@ import {
 
 function Dashboard(props) {
   const context = useContext(UserContext).user;
+  const userScores = getScores(`http://localhost:5000/api/results/${context.id}/scores`)
   return (
     <>
       <div className="content">

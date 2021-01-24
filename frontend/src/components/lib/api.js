@@ -8,6 +8,12 @@ export async function getUsers(url) {
     return response
 }
 
+export async function getScores(url) {
+    const response = await axios.get(url)
+    console.log(response);
+    return response
+}
+
 export async function postSignUp(user = {}) {
     const response = await axios.post(baseUrl + "/api/users/", user)
     console.log(response);
