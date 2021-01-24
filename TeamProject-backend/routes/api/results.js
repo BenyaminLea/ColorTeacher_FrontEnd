@@ -46,11 +46,8 @@ router.get("/:id/avgscore", (req, res) => {
 router.get("/:id/maxscore", (req, res) => {
   results
     .find({ UserId: req.params.id })
-    .sort({ date: -1 })
+    .sort({ Score: -1 })
     .then((scores) => {
-      scores.sort(function (a, b) {
-        return b - a;
-      });
       res.send(scores[0]);
     });
 });
@@ -58,11 +55,8 @@ router.get("/:id/maxscore", (req, res) => {
 router.get("/:id/minscore", (req, res) => {
   results
     .find({ UserId: req.params.id })
-    .sort({ date: -1 })
+    .sort({ Score: 1 })
     .then((scores) => {
-      scores.sort(function (a, b) {
-        return a - b;
-      });
       res.send(scores[0]);
     });
 });
