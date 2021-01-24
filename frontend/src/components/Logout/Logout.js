@@ -11,10 +11,8 @@ export default function Logout() {
           });
     }
 
-    const styles = {borderRadius: 50, width: 65, height: 45, fontSize: 10}
-
     return (
-        <Button variant="danger" id="log-out-button" style={styles} onClick={() => handleLogOut()}>
+        <Button variant="danger" id="log-out-button" onClick={() => handleLogOut()}>
             Log Out
         </Button>
     )
