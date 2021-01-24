@@ -96,7 +96,6 @@ class Sidebar extends React.Component {
                 </li>
               );
             })}
-            <Logout />
           </Nav>
         </div>
       </div>
