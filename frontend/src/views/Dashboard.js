@@ -48,10 +48,10 @@ function Dashboard(props) {
   })
   useEffect(() => {
     async function getAllScores(){
-      const avg = await getScores(`http://localhost:5000/api/results/${context.id}/avgscore`)
-      const allUserScores = await getScores(`http://localhost:5000/api/results/${context.id}/scores`)
-      const max = await getScores(`http://localhost:5000/api/results/${context.id}/maxscore`)
-      const rank = await getScores(`http://localhost:5000/api/results/ranking`)
+      const avg = await getScores(`https://group-project-itc.herokuapp.com/api/results/${context.id}/avgscore`)
+      const allUserScores = await getScores(`https://group-project-itc.herokuapp.com/api/results/${context.id}/scores`)
+      const max = await getScores(`https://group-project-itc.herokuapp.com/api/results/${context.id}/maxscore`)
+      const rank = await getScores(`https://group-project-itc.herokuapp.com/api/results/ranking`)
       setScores({
         average: avg.average ? avg.average.toFixed(0) : undefined,
         maxScore: max.Score,
