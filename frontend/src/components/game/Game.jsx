@@ -5,13 +5,10 @@ import TakePicture from "../TakePicture/TakePicture";
 
 import {
   Card,
-  CardHeader,
   CardBody,
-  CardFooter,
   CardTitle,
   Row,
   Col,
-  Button
 } from "reactstrap";
 
 function Game(props) {

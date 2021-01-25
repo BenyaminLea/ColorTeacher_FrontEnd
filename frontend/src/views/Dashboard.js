@@ -20,7 +20,7 @@ import { getScores } from "components/lib/api";
 import { UserContext } from "context/UserContext";
 import React, { useContext, useEffect, useState } from "react";
 // react plugin used to create charts
-import { Line, Pie } from "react-chartjs-2";
+import { Line } from "react-chartjs-2";
 // reactstrap components
 import {
   Card,
@@ -32,11 +32,11 @@ import {
   Col,
 } from "reactstrap";
 // core components
-import {
-  dashboard24HoursPerformanceChart,
-  dashboardEmailStatisticsChart,
-  dashboardNASDAQChart,
-} from "variables/charts.js";
+// import {
+//   dashboard24HoursPerformanceChart,
+//   dashboardEmailStatisticsChart,
+//   dashboardNASDAQChart,
+// } from "variables/charts.js";
 
 function Dashboard(props) {
   const context = useContext(UserContext).user;

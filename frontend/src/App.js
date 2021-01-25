@@ -1,16 +1,12 @@
-import React, { useContext, useEffect, useState } from "react";
-import ReactDOM from "react-dom";
+import React, { useContext, useEffect } from "react";
 import { createBrowserHistory } from "history";
-import { Router, Route, Switch, Redirect, withRouter } from "react-router-dom";
-import LandingPage from "./components/LandingPage/LandingPage";
+import {  Route, Switch, withRouter } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.css";
 import "assets/scss/paper-dashboard.scss?v=1.2.0";
 import "assets/demo/demo.css";
 import "perfect-scrollbar/css/perfect-scrollbar.css";
 
 import AdminLayout from "layouts/Admin.js";
-import SignUp from "components/SignUp/SignUp";
-import ProtectedRoute from "routes/ProtectedRoute";
 import { UserContext } from "context/UserContext";
 import auth from "./components/lib/auth";
 
