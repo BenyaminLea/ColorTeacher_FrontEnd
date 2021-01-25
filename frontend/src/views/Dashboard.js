@@ -53,7 +53,7 @@ function Dashboard(props) {
       const max = await getScores(`http://localhost:5000/api/results/${context.id}/maxscore`)
       const rank = await getScores(`http://localhost:5000/api/results/ranking`)
       setScores({
-        average: avg.average ? avg.average.toFixed(2) : undefined,
+        average: avg.average ? avg.average.toFixed(0) : undefined,
         maxScore: max.Score,
         ranking: rank,
         userScores: allUserScores
@@ -64,7 +64,7 @@ function Dashboard(props) {
 
   let graphData = {
     data: {
-      labels: scores.userScores.map(score => {return score.date}),
+      labels: scores.userScores.map(score => {return new Date(score.date).toLocaleString()}),
       datasets: [
         {
           data: scores.userScores.map(score => {return score.Score}),
@@ -220,7 +220,7 @@ function Dashboard(props) {
                 /> */}
                 <ol>
                 {scores.ranking.map((user) => {
-                  return <li id={Math.random()}>{user.FirstName + " " + user.LastName}: {user.averageScore.toFixed(2)}</li>
+                  return <li id={Math.random()}>{user.FirstName + " " + user.LastName}: {user.averageScore.toFixed(0)}</li>
                 })}
                 </ol>
               </CardBody>
