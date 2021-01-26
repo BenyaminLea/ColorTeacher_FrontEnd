@@ -76,7 +76,7 @@ function User(props) {
                           type="text"
                           onChange={handleChange}
                           value={formFields.username}
-                          name="username"
+                          name="UserName"
                         />
                       </FormGroup>
                     </Col>
@@ -106,7 +106,7 @@ function User(props) {
                           type="text"
                           onChange={handleChange}
                           value={formFields.fName}
-                          name="fName"
+                          name="FirstName"
                         />
                       </FormGroup>
                     </Col>
@@ -119,7 +119,7 @@ function User(props) {
                           type="text"
                           onChange={handleChange}
                           value={formFields.lName}
-                          name="lName"
+                          name="LastName"
                         />
                       </FormGroup>
                     </Col>
