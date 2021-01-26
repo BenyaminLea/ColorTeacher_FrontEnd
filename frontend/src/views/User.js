@@ -16,6 +16,7 @@
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 */
+import { updateUser } from "components/lib/api";
 import { UserContext } from "context/UserContext";
 import React, { useContext, useState } from "react";
 
@@ -49,7 +50,8 @@ function User(props) {
   function onSubmit(e) {
     e.preventDefault();
     console.log(formFields);
-    //send request to server
+    const updated = updateUser(context.id, formFields)
+    console.log(updated);
   }
   return (
     <>

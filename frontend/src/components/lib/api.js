@@ -21,6 +21,12 @@ export async function postSignUp(user = {}) {
     return response
 }
 
+export async function updateUser(userId, user = {}) {
+    const response = await axios.put(baseUrl + "/api/users/" + userId, user)
+    console.log(response);
+    return response
+}
+
 export async function postLogin(user = {}) {
     const response = await axios.post(baseUrl + "/api/login/", user)
     console.log(response);
