@@ -2,8 +2,8 @@ import axios from 'axios'
 
 const baseUrl = 'https://group-project-itc.herokuapp.com';
 
-export async function getUsers(url) {
-    const response = await axios.get(url)
+export async function getUsers() {
+    const response = await axios.get(baseUrl + '/api/users')
     console.log(response);
     return response
 }

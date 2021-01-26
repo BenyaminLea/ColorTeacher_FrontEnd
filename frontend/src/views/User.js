@@ -105,7 +105,7 @@ function User(props) {
                           placeholder="First Name"
                           type="text"
                           onChange={handleChange}
-                          value={formFields.fName}
+                          value={formFields.FirstName}
                           name="FirstName"
                         />
                       </FormGroup>
@@ -118,7 +118,7 @@ function User(props) {
                           placeholder="Last Name"
                           type="text"
                           onChange={handleChange}
-                          value={formFields.lName}
+                          value={formFields.LastName}
                           name="LastName"
                         />
                       </FormGroup>

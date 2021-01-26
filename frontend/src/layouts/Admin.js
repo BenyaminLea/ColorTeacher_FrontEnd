@@ -73,6 +73,7 @@ class Dashboard extends React.Component {
           routes={this.props.user ? protectedRoutes : routes}
           bgColor={this.state.backgroundColor}
           activeColor={this.state.activeColor}
+          user={this.props.user}
         />
         <div className="main-panel" ref={this.mainPanel}>
           <DemoNavbar {...this.props} />

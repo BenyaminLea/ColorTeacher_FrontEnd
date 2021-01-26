@@ -24,6 +24,13 @@
   background-color: #777777;
 }
 
+#user-list{
+  margin-top: 120px;
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
 .typography-line {
   padding-left: 25%;
   margin-bottom: 35px;
