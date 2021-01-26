@@ -50,7 +50,7 @@ function User(props) {
   function onSubmit(e) {
     e.preventDefault();
     console.log(formFields);
-    const updated = updateUser(context.id, formFields)
+    const updated = await updateUser(context.id, formFields)
     console.log(updated);
   }
   return (
