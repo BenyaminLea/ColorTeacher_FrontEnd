@@ -29,7 +29,7 @@ var protectedRoutes = [
     {
         path: "/admin-page",
         name: "Admin Page",
-        icon: "nc-icon nc-single-02",
+        icon: "nc-icon nc-tie-bow",
         component: AdminPage,
         layout: "/admin",
     },

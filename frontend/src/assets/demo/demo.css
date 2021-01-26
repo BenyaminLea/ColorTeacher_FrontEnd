@@ -47,6 +47,7 @@
   font-weight: 500;
   display: flex;
   justify-content: center;
+  box-shadow: #7e7b7b 2px 2px 5px 1px;
 }
 
 .typography-line span {
