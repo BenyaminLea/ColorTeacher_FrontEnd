@@ -199,7 +199,6 @@ class Header extends React.Component {
             </Nav>
           </Collapse>
         </Container>
-        <Logout />
       </Navbar>
     );
   }

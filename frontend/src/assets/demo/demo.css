@@ -40,14 +40,17 @@
 }
 
 #log-out-button {
-  border-radius: 100%;
-  width: 40px;
-  height: 42px;
-  font-size: 9px;
+  border-radius: 10px;
+  width: 150px;
+  /* height: 42px; */
+  font-size: 15px;
   font-weight: 500;
   display: flex;
   justify-content: center;
-  box-shadow: #7e7b7b 2px 2px 5px 1px;
+  box-shadow: #ffffff 2px 2px 5px 1px;
+  margin-top: 200px;
+  margin-left: 15px;
+  background-color: #a1a0a0;
 }
 
 .typography-line span {

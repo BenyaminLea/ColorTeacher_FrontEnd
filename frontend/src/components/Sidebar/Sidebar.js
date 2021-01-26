@@ -21,6 +21,7 @@ import { NavLink } from "react-router-dom";
 import { Nav } from "reactstrap";
 // javascript plugin used to create scrollbars on windows
 import PerfectScrollbar from "perfect-scrollbar";
+import Logout from "components/Logout/Logout";
 
 var ps;
 
@@ -93,6 +94,7 @@ class Sidebar extends React.Component {
                 </li>
               );
             })}
+            {this.props.user ? <Logout /> : <></>}
           </Nav>
         </div>
       </div>

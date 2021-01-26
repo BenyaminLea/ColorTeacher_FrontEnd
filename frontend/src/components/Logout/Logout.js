@@ -12,7 +12,7 @@ export default function Logout() {
     }
 
     return (
-        <Button variant="danger" id="log-out-button" onClick={() => handleLogOut()}>
+        <Button id="log-out-button" onClick={() => handleLogOut()}>
             Log Out
         </Button>
     )
