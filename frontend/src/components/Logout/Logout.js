@@ -7,7 +7,7 @@ export default function Logout() {
     function handleLogOut() {
         localStorage.clear();
         auth.logout(() => {
-            window.location.reload()
+            window.location.assign('/')
           });
     }
 
