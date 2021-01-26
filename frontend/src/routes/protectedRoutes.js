@@ -1,4 +1,5 @@
 
+import AdminPage from "components/AdminPage/AdminPage";
 import Dashboard from "views/Dashboard.js";
 import UserPage from "views/User.js";
 import Game from "../components/game/Game";
@@ -23,6 +24,13 @@ var protectedRoutes = [
         name: "User Profile",
         icon: "nc-icon nc-single-02",
         component: UserPage,
+        layout: "/admin",
+    },
+    {
+        path: "/admin-page",
+        name: "Admin Page",
+        icon: "nc-icon nc-tie-bow",
+        component: AdminPage,
         layout: "/admin",
     },
 ];

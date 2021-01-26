@@ -1,14 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 
 import {
     Card,
-    CardHeader,
     CardBody,
-    CardFooter,
     CardTitle,
     Row,
     Col,
-    Button
 } from "reactstrap";
 
 function GameLanding(props) {

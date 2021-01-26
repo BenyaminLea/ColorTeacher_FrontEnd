@@ -16,6 +16,7 @@
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 */
+import { updateUser } from "components/lib/api";
 import { UserContext } from "context/UserContext";
 import React, { useContext, useState } from "react";
 
@@ -25,7 +26,6 @@ import {
   Card,
   CardHeader,
   CardBody,
-  CardFooter,
   CardTitle,
   FormGroup,
   Form,
@@ -47,10 +47,11 @@ function User(props) {
     });
   }
 
-  function onSubmit(e) {
+  async function onSubmit(e) {
     e.preventDefault();
     console.log(formFields);
-    //send request to server
+    const updated = await updateUser(context.id, formFields)
+    console.log(updated);
   }
   return (
     <>
@@ -70,12 +71,12 @@ function User(props) {
                       <FormGroup>
                         <label>Username</label>
                         <Input
-                          // defaultValue={context.username}
+                          defaultValue={context.UserName}
                           placeholder="Username"
                           type="text"
                           onChange={handleChange}
                           value={formFields.username}
-                          name="username"
+                          name="UserName"
                         />
                       </FormGroup>
                     </Col>
@@ -87,7 +88,7 @@ function User(props) {
                         <Input
                           placeholder="Email"
                           type="email"
-                          // defaultValue={context.email}
+                          defaultValue={context.email}
                           onChange={handleChange}
                           value={formFields.email}
                           name="email"
@@ -100,12 +101,12 @@ function User(props) {
                       <FormGroup>
                         <label>First Name</label>
                         <Input
-                          // defaultValue={context.fName}
+                          defaultValue={context.FirstName}
                           placeholder="First Name"
                           type="text"
                           onChange={handleChange}
-                          value={formFields.fName}
-                          name="fName"
+                          value={formFields.FirstName}
+                          name="FirstName"
                         />
                       </FormGroup>
                     </Col>
@@ -113,12 +114,12 @@ function User(props) {
                       <FormGroup>
                         <label>Last Name</label>
                         <Input
-                          // defaultValue={context.lName}
+                          defaultValue={context.LastName}
                           placeholder="Last Name"
                           type="text"
                           onChange={handleChange}
-                          value={formFields.lName}
-                          name="lName"
+                          value={formFields.LastName}
+                          name="LastName"
                         />
                       </FormGroup>
                     </Col>

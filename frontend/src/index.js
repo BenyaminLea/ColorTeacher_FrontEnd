@@ -16,20 +16,15 @@
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 */
-import React, { useContext } from "react";
+import React from "react";
 import ReactDOM from "react-dom";
 import { createBrowserHistory } from "history";
-import { Router, Route, Switch, Redirect } from "react-router-dom";
-import LandingPage from './components/LandingPage/LandingPage'
+import { Router } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.css";
 import "assets/scss/paper-dashboard.scss?v=1.2.0";
 import "assets/demo/demo.css";
 import "perfect-scrollbar/css/perfect-scrollbar.css";
 import App from './App'
-import AdminLayout from "layouts/Admin.js";
-import SignUp from "components/SignUp/SignUp";
-import { UserContext } from "context/UserContext";
-
 const hist = createBrowserHistory();
 
 ReactDOM.render(

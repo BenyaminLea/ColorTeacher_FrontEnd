@@ -1,9 +1,7 @@
-import { Button, Modal, Navbar, Nav } from "react-bootstrap";
+import { Button, Modal } from "react-bootstrap";
 import SignUp from "components/SignUp/SignUp";
-import { Link, Redirect } from "react-router-dom";
 import React, { useContext, useState } from "react";
 import Login from "../Login/Login";
-import { getUsers } from "../lib/api";
 import { UserContext } from "context/UserContext";
 
 export default function LandingPage() {

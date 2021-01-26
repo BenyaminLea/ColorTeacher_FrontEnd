@@ -7,12 +7,12 @@ export default function Logout() {
     function handleLogOut() {
         localStorage.clear();
         auth.logout(() => {
-            window.location.reload()
+            window.location.assign('/')
           });
     }
 
     return (
-        <Button variant="danger" id="log-out-button" style={{borderRadius: 50}} onClick={() => handleLogOut()}>
+        <Button variant="danger" id="log-out-button" onClick={() => handleLogOut()}>
             Log Out
         </Button>
     )

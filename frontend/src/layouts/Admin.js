@@ -22,9 +22,7 @@ import PerfectScrollbar from "perfect-scrollbar";
 import { Route, Switch } from "react-router-dom";
 
 import DemoNavbar from "components/Navbars/DemoNavbar.js";
-import Footer from "components/Footer/Footer.js";
 import Sidebar from "components/Sidebar/Sidebar.js";
-import FixedPlugin from "components/FixedPlugin/FixedPlugin.js";
 
 import routes from "../routes/routes.js";
 import protectedRoutes from "../routes/protectedRoutes.js";
@@ -75,6 +73,7 @@ class Dashboard extends React.Component {
           routes={this.props.user ? protectedRoutes : routes}
           bgColor={this.state.backgroundColor}
           activeColor={this.state.activeColor}
+          user={this.props.user}
         />
         <div className="main-panel" ref={this.mainPanel}>
           <DemoNavbar {...this.props} />

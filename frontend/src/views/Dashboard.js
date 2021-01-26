@@ -16,10 +16,11 @@
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 */
+import { getScores } from "components/lib/api";
 import { UserContext } from "context/UserContext";
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 // react plugin used to create charts
-import { Line, Pie } from "react-chartjs-2";
+import { Line } from "react-chartjs-2";
 // reactstrap components
 import {
   Card,
@@ -31,14 +32,60 @@ import {
   Col,
 } from "reactstrap";
 // core components
-import {
-  dashboard24HoursPerformanceChart,
-  dashboardEmailStatisticsChart,
-  dashboardNASDAQChart,
-} from "variables/charts.js";
+// import {
+//   dashboard24HoursPerformanceChart,
+//   dashboardEmailStatisticsChart,
+//   dashboardNASDAQChart,
+// } from "variables/charts.js";
 
 function Dashboard(props) {
   const context = useContext(UserContext).user;
+  const [scores, setScores] = useState({
+    average: '',
+    maxScore: '',
+    ranking: [],
+    userScores: [],
+  })
+  useEffect(() => {
+    async function getAllScores(){
+      const avg = await getScores(`https://group-project-itc.herokuapp.com/api/results/${context.id}/avgscore`)
+      const allUserScores = await getScores(`https://group-project-itc.herokuapp.com/api/results/${context.id}/scores`)
+      const max = await getScores(`https://group-project-itc.herokuapp.com/api/results/${context.id}/maxscore`)
+      const rank = await getScores(`https://group-project-itc.herokuapp.com/api/results/ranking`)
+      setScores({
+        average: avg.average ? avg.average.toFixed(0) : undefined,
+        maxScore: max.Score,
+        ranking: rank,
+        userScores: allUserScores
+      })
+    }
+    getAllScores()
+  }, [])
+
+  let graphData = {
+    data: {
+      labels: scores.userScores.map(score => {return new Date(score.date).toLocaleString()}),
+      datasets: [
+        {
+          data: scores.userScores.map(score => {return score.Score}),
+          fill: false,
+          borderColor: "#fbc658",
+          backgroundColor: "transparent",
+          pointBorderColor: "#fbc658",
+          pointRadius: 4,
+          pointHoverRadius: 4,
+          pointBorderWidth: 8,
+        }
+      ],
+    },
+    options: {
+      legend: {
+        display: false,
+        position: "top",
+      },
+    },
+  };
+
   return (
     <>
       <div className="content">
@@ -49,14 +96,14 @@ function Dashboard(props) {
                 <Row>
                   <Col md="4" xs="5">
                     <div className="icon-big text-center icon-warning">
-                      <i className="nc-icon nc-globe text-warning" />
+                      <i className="nc-icon nc-book-bookmark text-warning" />
                     </div>
                   </Col>
                   <Col md="8" xs="7">
                     <div className="numbers">
                       <p className="card-category">Last Played</p>
                       <CardTitle tag="p">
-                        {context.lastPlayed}
+                        {scores.userScores.length > 0 ? new Date(scores.userScores[0].date).toLocaleString() : "You haven't played yet"}
                       </CardTitle>
                       <p />
                     </div>
@@ -66,7 +113,6 @@ function Dashboard(props) {
               <CardFooter>
                 <hr />
                 <div className="stats">
-                  <i className="fas fa-sync-alt" /> ???
                   </div>
               </CardFooter>
             </Card>
@@ -77,13 +123,13 @@ function Dashboard(props) {
                 <Row>
                   <Col md="4" xs="5">
                     <div className="icon-big text-center icon-warning">
-                      <i className="nc-icon nc-money-coins text-success" />
+                      <i className="nc-icon nc-bullet-list-67 text-success" />
                     </div>
                   </Col>
                   <Col md="8" xs="7">
                     <div className="numbers">
-                      <p className="card-category">Gold</p>
-                      <CardTitle tag="p">{context.gold}</CardTitle>
+                      <p className="card-category">Average Score</p>
+                      <CardTitle tag="p">{scores.average !== undefined ? scores.average : "No scores yet"}</CardTitle>
                       <p />
                     </div>
                   </Col>
@@ -92,7 +138,7 @@ function Dashboard(props) {
               <CardFooter>
                 <hr />
                 <div className="stats">
-                  <i className="far fa-calendar" /> ???
+                  <i className="far fa-calendar" /> 
                   </div>
               </CardFooter>
             </Card>
@@ -103,13 +149,13 @@ function Dashboard(props) {
                 <Row>
                   <Col md="4" xs="5">
                     <div className="icon-big text-center icon-warning">
-                      <i className="nc-icon nc-vector text-danger" />
+                      <i className="nc-icon nc-satisfied text-danger" />
                     </div>
                   </Col>
                   <Col md="8" xs="7">
                     <div className="numbers">
-                      <p className="card-category">Points</p>
-                      <CardTitle tag="p">{context.totalPoints}</CardTitle>
+                      <p className="card-category">Max Score</p>
+                      <CardTitle tag="p">{scores.maxScore !== undefined ? scores.maxScore : "No scores yet"}</CardTitle>
                       <p />
                     </div>
                   </Col>
@@ -118,7 +164,7 @@ function Dashboard(props) {
               <CardFooter>
                 <hr />
                 <div className="stats">
-                  <i className="far fa-clock" /> ???
+                  <i className="far fa-clock" /> 
                   </div>
               </CardFooter>
             </Card>
@@ -129,13 +175,19 @@ function Dashboard(props) {
                 <Row>
                   <Col md="4" xs="5">
                     <div className="icon-big text-center icon-warning">
-                      <i className="nc-icon nc-favourite-28 text-primary" />
+                      <i className="nc-icon nc-trophy text-primary" />
                     </div>
                   </Col>
                   <Col md="8" xs="7">
                     <div className="numbers">
-                      <p className="card-category">Rank</p>
-                      <CardTitle tag="p">{context.rank}</CardTitle>
+                      <p className="card-category">Your Ranking</p>
+                      <CardTitle tag="p">{
+                        scores.ranking.map(rank => {
+                          if (rank._id == context.id){
+                            return scores.ranking.indexOf(rank)+1
+                          }
+                        })
+                      }</CardTitle>
                       <p />
                     </div>
                   </Col>
@@ -144,38 +196,43 @@ function Dashboard(props) {
               <CardFooter>
                 <hr />
                 <div className="stats">
-                  <i className="fas fa-sync-alt" />???
+                  <i className="fas fa-sync-alt" />
                   </div>
               </CardFooter>
             </Card>
           </Col>
         </Row>
+        {/* <Row>
+         
+        </Row> */}
         <Row>
-          <Col md="12">
+        <Col md="4">
             <Card>
               <CardHeader>
-                <CardTitle tag="h5">???</CardTitle>
-                <p className="card-category">???</p>
+                <CardTitle tag="h5">Ranking</CardTitle>
               </CardHeader>
               <CardBody>
-                <Line
+                {/* <Line
                   data={dashboard24HoursPerformanceChart.data}
                   options={dashboard24HoursPerformanceChart.options}
                   width={400}
                   height={100}
-                />
+                /> */}
+                <ol>
+                {scores.ranking.map((user) => {
+                  return <li id={Math.random()}>{user.FirstName + " " + user.LastName}: {user.averageScore.toFixed(0)}</li>
+                })}
+                </ol>
               </CardBody>
               <CardFooter>
                 <hr />
                 <div className="stats">
-                  <i className="fa fa-history" />???
+                  <i className="fa fa-history" />
                   </div>
               </CardFooter>
             </Card>
           </Col>
-        </Row>
-        <Row>
-          <Col md="4">
+          {/* <Col md="4">
             <Card>
               <CardHeader>
                 <CardTitle tag="h5">Email Statistics</CardTitle>
@@ -200,25 +257,25 @@ function Dashboard(props) {
                   </div>
               </CardFooter>
             </Card>
-          </Col>
+          </Col> */}
           <Col md="8">
             <Card className="card-chart">
               <CardHeader>
-                <CardTitle tag="h5">NASDAQ: AAPL</CardTitle>
-                <p className="card-category">Line Chart with Points</p>
+                <CardTitle tag="h5">Your scores:</CardTitle>
+                <p className="card-category">See Your Improvement!</p>
               </CardHeader>
               <CardBody>
                 <Line
-                  data={dashboardNASDAQChart.data}
-                  options={dashboardNASDAQChart.options}
+                  data={graphData.data}
+                  options={graphData.options}
                   width={400}
-                  height={100}
+                  height={150}
                 />
               </CardBody>
               <CardFooter>
                 <div className="chart-legend">
-                  <i className="fa fa-circle text-info" /> Tesla Model S{" "}
-                  <i className="fa fa-circle text-warning" /> BMW 5 Series
+                  {/* <i className="fa fa-circle text-info" /> Your scores over time{" "} */}
+                  <i className="fa fa-circle text-warning" /> Your scores over time
                   </div>
                 <hr />
                 <div className="card-stats">
