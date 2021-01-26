@@ -3,15 +3,12 @@ import React from 'react';
 
 export const UserContext = React.createContext({
     user: {
-        username: "hi",
+        UserName: "hi",
         email: "",
-        fName: "im",
-        lName: "a mock",
-        about: "abouttttttttt",
-        rank: "7",
-        lastPlayed: "1h ago",
-        totalPoints: "1563",
-        gold: "48963"
+        FirstsName: "im",
+        LastName: "a mock",
+        password: '',
+        password2: '',
     },
     setUserInfo: function (info) { this.user = info }
 });
