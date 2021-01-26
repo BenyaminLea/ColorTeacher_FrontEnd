@@ -47,7 +47,7 @@ function User(props) {
     });
   }
 
-  function onSubmit(e) {
+  async function onSubmit(e) {
     e.preventDefault();
     console.log(formFields);
     const updated = await updateUser(context.id, formFields)
