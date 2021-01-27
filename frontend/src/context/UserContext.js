@@ -9,6 +9,7 @@ export const UserContext = React.createContext({
         LastName: "a mock",
         password: '',
         password2: '',
+        type: "admin"
     },
     setUserInfo: function (info) { this.user = info }
 });

@@ -26,7 +26,8 @@ import Sidebar from "components/Sidebar/Sidebar.js";
 
 import routes from "../routes/routes.js";
 import protectedRoutes from "../routes/protectedRoutes.js";
-import ProtectedRoute from "../routes/ProtectedRoute"
+import ProtectedRoute from "../routes/ProtectedRoute";
+import protectedAdminRoutes from "../routes/protectedAdminRoutes";
 
 var ps;
 
@@ -40,7 +41,7 @@ class Dashboard extends React.Component {
     this.mainPanel = React.createRef();
   }
   componentDidMount() {
-    console.log(this.props);
+    console.log("immounted", this.props);
     if (navigator.platform.indexOf("Win") > -1) {
       ps = new PerfectScrollbar(this.mainPanel.current);
       document.body.classList.toggle("perfect-scrollbar-on");
@@ -66,11 +67,12 @@ class Dashboard extends React.Component {
   };
 
   render() {
+    console.log(this.state);
     return (
       <div className="wrapper">
         <Sidebar
           {...this.props}
-          routes={this.props.user ? protectedRoutes : routes}
+          routes={this.props.routes}
           bgColor={this.state.backgroundColor}
           activeColor={this.state.activeColor}
           user={this.props.user}
@@ -79,7 +81,7 @@ class Dashboard extends React.Component {
           <DemoNavbar {...this.props} />
           {this.props.user ?
             <Switch>
-              {protectedRoutes.map((prop, key) => {
+              {this.props.routes.map((prop, key) => {
                 return (
                   <ProtectedRoute
                     exact
@@ -101,7 +103,6 @@ class Dashboard extends React.Component {
                   />
                 );
               })}
-
             </Switch>
 
           }

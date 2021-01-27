@@ -47,7 +47,7 @@ function Dashboard(props) {
     userScores: [],
   })
   useEffect(() => {
-    async function getAllScores(){
+    async function getAllScores() {
       const avg = await getScores(`https://group-project-itc.herokuapp.com/api/results/${context.id}/avgscore`)
       const allUserScores = await getScores(`https://group-project-itc.herokuapp.com/api/results/${context.id}/scores`)
       const max = await getScores(`https://group-project-itc.herokuapp.com/api/results/${context.id}/maxscore`)
@@ -64,10 +64,10 @@ function Dashboard(props) {
 
   let graphData = {
     data: {
-      labels: scores.userScores.map(score => {return new Date(score.date).toLocaleString()}),
+      labels: scores.userScores.map(score => { return new Date(score.date).toLocaleString() }),
       datasets: [
         {
-          data: scores.userScores.map(score => {return score.Score}),
+          data: scores.userScores.map(score => { return score.Score }),
           fill: false,
           borderColor: "#fbc658",
           backgroundColor: "transparent",
@@ -113,7 +113,7 @@ function Dashboard(props) {
               <CardFooter>
                 <hr />
                 <div className="stats">
-                  </div>
+                </div>
               </CardFooter>
             </Card>
           </Col>
@@ -138,8 +138,8 @@ function Dashboard(props) {
               <CardFooter>
                 <hr />
                 <div className="stats">
-                  <i className="far fa-calendar" /> 
-                  </div>
+                  <i className="far fa-calendar" />
+                </div>
               </CardFooter>
             </Card>
           </Col>
@@ -164,8 +164,8 @@ function Dashboard(props) {
               <CardFooter>
                 <hr />
                 <div className="stats">
-                  <i className="far fa-clock" /> 
-                  </div>
+                  <i className="far fa-clock" />
+                </div>
               </CardFooter>
             </Card>
           </Col>
@@ -183,8 +183,8 @@ function Dashboard(props) {
                       <p className="card-category">Your Ranking</p>
                       <CardTitle tag="p">{
                         scores.ranking.map(rank => {
-                          if (rank._id == context.id){
-                            return scores.ranking.indexOf(rank)+1
+                          if (rank._id == context.id) {
+                            return scores.ranking.indexOf(rank) + 1
                           }
                         })
                       }</CardTitle>
@@ -197,7 +197,7 @@ function Dashboard(props) {
                 <hr />
                 <div className="stats">
                   <i className="fas fa-sync-alt" />
-                  </div>
+                </div>
               </CardFooter>
             </Card>
           </Col>
@@ -206,7 +206,7 @@ function Dashboard(props) {
          
         </Row> */}
         <Row>
-        <Col md="4">
+          <Col md="4">
             <Card>
               <CardHeader>
                 <CardTitle tag="h5">Ranking</CardTitle>
@@ -219,16 +219,16 @@ function Dashboard(props) {
                   height={100}
                 /> */}
                 <ol>
-                {scores.ranking.map((user) => {
-                  return <li id={Math.random()}>{user.FirstName + " " + user.LastName}: {user.averageScore.toFixed(0)}</li>
-                })}
+                  {scores.ranking.map((user) => {
+                    return <li key={Math.random()} id={Math.random()}>{user.FirstName + " " + user.LastName}: {user.averageScore.toFixed(0)}</li>
+                  })}
                 </ol>
               </CardBody>
               <CardFooter>
                 <hr />
                 <div className="stats">
                   <i className="fa fa-history" />
-                  </div>
+                </div>
               </CardFooter>
             </Card>
           </Col>

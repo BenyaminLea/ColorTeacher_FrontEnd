@@ -5,18 +5,18 @@ import CardText from "reactstrap/lib/CardText";
 import CardTitle from "reactstrap/lib/CardTitle";
 
 export default function UserCard(user) {
-    console.log(user);
+  console.log(user);
   return (
     <div>
-      <Card style={{width: 300}}>
+      <Card style={{ width: 300, height: 200 }}>
         <CardBody>
-        <CardTitle tag="h5">{user.user.FirstName + " " + user.user.LastName}</CardTitle>
-            <CardText>
-                Email Address: {user.user.email}<br/>
-                Phone Number: {user.user.Phone}<br/>
-                {user.user.type === 'admin' ? 'Admin' : 'Not An Admin'}<br/>
+          <CardTitle tag="h5">{user.user.FirstName + " " + user.user.LastName}</CardTitle>
+          <CardText>
+            Email Address: {user.user.email}<br />
+                Phone Number: {user.user.Phone}<br />
+            {user.user.type === 'admin' ? 'Admin' : 'Not An Admin'}<br />
                 Average Score: {user.user.averageScore}
-            </CardText>
+          </CardText>
         </CardBody>
       </Card>
     </div>
