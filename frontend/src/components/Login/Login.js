@@ -18,7 +18,7 @@ function Login(props) {
     localStorage.setItem('user', JSON.stringify(response.data.user))
     context.setUserInfo(response.data.user);
     auth.login(() => {
-      props.history.push(`/admin/main`);
+      props.history.push(`/dash/main`);
     });
     // window.location.reload()
   }

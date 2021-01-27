@@ -10,28 +10,28 @@ var protectedRoutes = [
         name: "Dashboard",
         icon: "nc-icon nc-bank",
         component: Dashboard,
-        layout: "/admin",
+        layout: "/dash",
     },
     {
         path: "/play",
         name: "Play",
         icon: "nc-icon nc-diamond",
         component: Game,
-        layout: "/admin",
+        layout: "/dash",
     },
     {
         path: "/user-page",
         name: "User Profile",
         icon: "nc-icon nc-single-02",
         component: UserPage,
-        layout: "/admin",
+        layout: "/dash",
     },
-    {
-        path: "/admin-page",
-        name: "Admin Page",
-        icon: "nc-icon nc-tie-bow",
-        component: AdminPage,
-        layout: "/admin",
-    },
+    // {
+    //     path: "/admin-page",
+    //     name: "Admin Page",
+    //     icon: "nc-icon nc-tie-bow",
+    //     component: AdminPage,
+    //     layout: "/admin",
+    // },
 ];
 export default protectedRoutes;
