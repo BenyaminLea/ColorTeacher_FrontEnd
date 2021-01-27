@@ -126,7 +126,14 @@ class TakePicture extends Component {
 
     getColors = colors =>
     this.setState(state => ({ colors: [...state.colors, ...colors] }))
-    closeModal = () => this.setState({ save: false })
+    closeModal = () => {
+      this.setState({ save: false })
+      if(this.state.right === 'true'){
+        this.props.updateScore()
+      } else {
+        window.location.reload()
+      }
+    }
 
     render() {
         if (this.state.save === true) {

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import Speech from 'react-speech';
 import TakePicture from "../TakePicture/TakePicture";
 
@@ -10,18 +10,30 @@ import {
   Row,
   Col,
 } from "reactstrap";
+import { UserContext } from "context/UserContext";
 
 
 function Game(props) {
-  const ColorArray = ["blue", "green", "red", "orange", "yellow", "pink", "purple", "black", "white", "brown", "grey"];
-  const rendom = Math.floor(Math.random() * 11) + 1 
+
+  const user = useContext(UserContext).user
+  const [score, setScore] = useState(0)
+  const [level, setLevel] = useState(0)
+  const ColorArray = [["blue", "green", "red"], ["orange", "yellow", "pink"], ["purple", "black", "grey"]];
+  const rendom = Math.floor(Math.random() * 3) + 1 
   const pick = rendom - 1
-  var whatToSay = "Bring me something" + ColorArray[pick];
+  var whatToSay = "Bring me something" + ColorArray[level][pick];
   const [question, setQuestion] = useState(1);
   const onClick = (e) => {
     console.log("imclicked");
     setQuestion(prev => prev + 1)
   };
+
+  const updateScore = () => {
+    setScore(score + 10)
+    setLevel(level + 1)
+    setQuestion(question + 1)
+  }
+
   return (
     <div className="content">
       <Row>
@@ -37,7 +49,9 @@ function Game(props) {
                         <CardTitle tag="p">
                           <Speech text={whatToSay}/>
                            <br></br>
-                          <TakePicture color={ColorArray[pick]}/>
+                          <TakePicture
+                          updateScore={updateScore}
+                          color={ColorArray[level][pick]}/>
                         </CardTitle>
                         <p />
                       </div>
