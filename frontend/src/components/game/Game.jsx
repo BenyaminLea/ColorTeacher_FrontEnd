@@ -11,7 +11,12 @@ import {
   Col,
 } from "reactstrap";
 
+
 function Game(props) {
+  const ColorArray = ["blue", "green", "red", "orange", "yellow", "pink", "purple", "black", "white", "brown", "grey"];
+  const rendom = Math.floor(Math.random() * 11) + 1 
+  const pick = rendom - 1
+  var whatToSay = "Bring me something" + ColorArray[pick];
   const [question, setQuestion] = useState(1);
   const onClick = (e) => {
     console.log("imclicked");
@@ -30,9 +35,9 @@ function Game(props) {
                       <div className="numbers" style={{ textAlign: "left" }}>
                         <p className="card-category">Queston 1 out of 10</p>
                         <CardTitle tag="p">
-                          <Speech text="Bring me something blue!"/>
+                          <Speech text={whatToSay}/>
                            <br></br>
-                           <TakePicture/>
+                          <TakePicture color={ColorArray[pick]}/>
                         </CardTitle>
                         <p />
                       </div>
