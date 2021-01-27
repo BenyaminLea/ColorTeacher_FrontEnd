@@ -272,16 +272,15 @@ function Dashboard(props) {
                   height={150}
                 />
               </CardBody>
-              <CardFooter>
+              {/* <CardFooter>
                 <div className="chart-legend">
-                  {/* <i className="fa fa-circle text-info" /> Your scores over time{" "} */}
                   <i className="fa fa-circle text-warning" /> Your scores over time
                   </div>
                 <hr />
-                <div className="card-stats">
+                <div>
                   <i className="fa fa-check" /> Data information certified
                   </div>
-              </CardFooter>
+              </CardFooter> */}
             </Card>
           </Col>
         </Row>
