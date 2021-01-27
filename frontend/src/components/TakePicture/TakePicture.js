@@ -12,7 +12,7 @@ class TakePicture extends Component {
     mainColor: [],
     colorGroup: "",
     save: false,
-    right: "false",
+    right: false,
   };
 
   videoEle = React.createRef();
@@ -24,6 +24,9 @@ class TakePicture extends Component {
   };
 
   startCamera = async () => {
+    this.setState({
+      right: false,
+    });
     try {
       const stream = await navigator.mediaDevices.getUserMedia({
         video: true,
@@ -97,7 +100,7 @@ class TakePicture extends Component {
       this.setState({ colorGroup: n_shade_name });
       console.log(this.state.colorGroup);
       if (n_shade_name.toLowerCase() === this.props.color.toLowerCase()) {
-        this.setState({ right: "true" });
+        this.setState({ right: true });
       }
     });
     this.setState({
@@ -126,7 +129,7 @@ class TakePicture extends Component {
     this.setState((state) => ({ colors: [...state.colors, ...colors] }));
   closeModal = () => {
     this.setState({ save: false });
-    if (this.state.right === "true") {
+    if (this.state.right === true) {
       this.props.updateScore(true);
     } else {
       this.props.updateScore(false);

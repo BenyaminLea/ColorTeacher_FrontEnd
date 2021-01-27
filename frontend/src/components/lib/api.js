@@ -10,10 +10,9 @@ export async function getUsers() {
 
 export async function postScore(userId, score) {
   console.log("hello");
-  const response = await axios.post(
-    baseUrl + `/api/results/${userId}/score`,
-    score
-  );
+  const response = await axios.post(baseUrl + `/api/results/${userId}/score`, {
+    Score: score,
+  });
   console.log(response);
   return response;
 }

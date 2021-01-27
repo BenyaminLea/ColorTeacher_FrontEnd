@@ -11,7 +11,7 @@ import {
   Col,
 } from "reactstrap";
 import { UserContext } from "context/UserContext";
-import { postScore } from "components/lib/api";
+import { postScore } from "../lib/api";
 
 
 function Game(props) {
@@ -19,6 +19,7 @@ function Game(props) {
   const user = useContext(UserContext).user
   const [score, setScore] = useState(0)
   const [level, setLevel] = useState(0)
+  const [gameOver, setGameOver] = useState(false)
   const ColorArray = [["blue", "green", "red"], ["orange", "yellow", "pink"], ["purple", "black", "grey"]];
   const rendom = Math.floor(Math.random() * 3) + 1 
   const pick = rendom - 1
@@ -29,7 +30,7 @@ function Game(props) {
     setQuestion(prev => prev + 1)
   };
 
-  const updateScore = (bool) => {
+  const updateScore = async (bool) => {
     let quest=question;
     let points=score
     if (bool && level<3){
@@ -44,8 +45,10 @@ function Game(props) {
     quest=quest+1
     setQuestion(question + 1)
     if (quest===4){
-      postScore(user.id,points)
-      window.location.reload()
+      const res = await postScore(user.id,points)
+     if (res){
+        setGameOver(true)
+      }
     }
   }
 
@@ -56,7 +59,7 @@ function Game(props) {
           <Row>
             <Col>
               <Card className="card-stats" style={{ marginBottom: "10rem" }}>
-                <CardBody>
+                {!gameOver && <CardBody>
                   <Row>
                     <Col>
                       <div className="numbers" style={{ textAlign: "left" }}>
@@ -73,7 +76,8 @@ function Game(props) {
                       </div>
                     </Col>
                   </Row>
-                </CardBody>
+                </CardBody>}
+                {gameOver && <h2 style={{ marginTop: "50px", marginLeft:"10px", marginRight:"10px" }}> The game is over ! Please return to the dashboard to see your rank. </h2> }
               </Card>
             </Col>
           </Row>
