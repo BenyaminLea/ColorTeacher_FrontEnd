@@ -9,7 +9,7 @@ var protectedAdminRoutes = [
         name: "Admin Page",
         icon: "nc-icon nc-tie-bow",
         component: AdminPage,
-        layout: "/admin",
+        layout: "/dash",
     },
 ];
 export default protectedAdminRoutes;
