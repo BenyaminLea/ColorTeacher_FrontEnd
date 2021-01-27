@@ -11,6 +11,7 @@ import {
   Col,
 } from "reactstrap";
 import { UserContext } from "context/UserContext";
+import { postScore } from "components/lib/api";
 
 
 function Game(props) {
@@ -28,10 +29,24 @@ function Game(props) {
     setQuestion(prev => prev + 1)
   };
 
-  const updateScore = () => {
-    setScore(score + 10)
-    setLevel(level + 1)
+  const updateScore = (bool) => {
+    let quest=question;
+    let points=score
+    if (bool && level<3){
+      setScore(score + 10)
+      setLevel(level + 1)
+      points=points+10
+    }
+    else if (bool && level===3){
+      setScore(score + 10)
+      points=points+10
+    }
+    quest=quest+1
     setQuestion(question + 1)
+    if (quest===4){
+      postScore(user.id,points)
+      window.location.reload()
+    }
   }
 
   return (
@@ -45,7 +60,8 @@ function Game(props) {
                   <Row>
                     <Col>
                       <div className="numbers" style={{ textAlign: "left" }}>
-                        <p className="card-category">Queston 1 out of 10</p>
+                        <p className="card-category">Queston {question} out of 3</p>
+                        <p> Score {score} </p>
                         <CardTitle tag="p">
                           <Speech text={whatToSay}/>
                            <br></br>
