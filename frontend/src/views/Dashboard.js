@@ -22,6 +22,8 @@ import React, { useContext, useEffect, useState } from "react";
 // react plugin used to create charts
 import { Line } from "react-chartjs-2";
 // reactstrap components
+import {ntc} from '../components/ntc'
+
 import {
   Card,
   CardHeader,
@@ -39,6 +41,18 @@ import {
 // } from "variables/charts.js";
 
 function Dashboard(props) {
+
+  ntc.init()
+  
+  var n_match  = ntc.name("#6195ED");
+  let n_rgb = n_match[0]; // This is the RGB value of the closest matching color
+  let n_name = n_match[1]; // This is the text string for the name of the match
+  let n_shade_rgb = n_match[2]; // This is the RGB value for the name of colors shade
+  let n_shade_name = n_match[3]; // This is the text string for the name of colors shade
+  let n_exactmatch = n_match[4]; // True if exact color match, False if close-match
+
+  console.log(n_match);
+
   const context = useContext(UserContext).user;
   const [scores, setScores] = useState({
     average: '',
