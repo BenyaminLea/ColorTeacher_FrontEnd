@@ -22,13 +22,12 @@ import PerfectScrollbar from "perfect-scrollbar";
 import { Route, Switch } from "react-router-dom";
 
 import DemoNavbar from "components/Navbars/DemoNavbar.js";
-import Footer from "components/Footer/Footer.js";
 import Sidebar from "components/Sidebar/Sidebar.js";
-import FixedPlugin from "components/FixedPlugin/FixedPlugin.js";
 
-import routes from "routes.js";
-import protectedRoutes from "protectedRoutes.js";
-import ProtectedRoute from "../components/custom/ProtectedRoute"
+import routes from "../routes/routes.js";
+import protectedRoutes from "../routes/protectedRoutes.js";
+import ProtectedRoute from "../routes/ProtectedRoute";
+import protectedAdminRoutes from "../routes/protectedAdminRoutes";
 
 var ps;
 
@@ -42,7 +41,7 @@ class Dashboard extends React.Component {
     this.mainPanel = React.createRef();
   }
   componentDidMount() {
-    console.log(this.props);
+    console.log("immounted", this.props);
     if (navigator.platform.indexOf("Win") > -1) {
       ps = new PerfectScrollbar(this.mainPanel.current);
       document.body.classList.toggle("perfect-scrollbar-on");
@@ -66,20 +65,23 @@ class Dashboard extends React.Component {
   handleBgClick = (color) => {
     this.setState({ backgroundColor: color });
   };
+
   render() {
+    console.log(this.state);
     return (
       <div className="wrapper">
         <Sidebar
           {...this.props}
-          routes={this.props.loggedIn ? protectedRoutes : routes}
+          routes={this.props.routes}
           bgColor={this.state.backgroundColor}
           activeColor={this.state.activeColor}
+          user={this.props.user}
         />
         <div className="main-panel" ref={this.mainPanel}>
           <DemoNavbar {...this.props} />
-          {this.props.loggedIn ?
+          {this.props.user ?
             <Switch>
-              {protectedRoutes.map((prop, key) => {
+              {this.props.routes.map((prop, key) => {
                 return (
                   <ProtectedRoute
                     exact
@@ -101,7 +103,6 @@ class Dashboard extends React.Component {
                   />
                 );
               })}
-
             </Switch>
 
           }

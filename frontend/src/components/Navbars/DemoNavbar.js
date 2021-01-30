@@ -16,6 +16,7 @@
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 */
+import Logout from "components/Logout/Logout.js";
 import React from "react";
 import { Link } from "react-router-dom";
 import {
@@ -36,7 +37,7 @@ import {
   Input,
 } from "reactstrap";
 
-import routes from "routes.js";
+import routes from "../../routes/routes.js";
 
 class Header extends React.Component {
   constructor(props) {
@@ -122,7 +123,7 @@ class Header extends React.Component {
           this.props.location.pathname.indexOf("full-screen-maps") !== -1
             ? "navbar-absolute fixed-top"
             : "navbar-absolute fixed-top " +
-              (this.state.color === "transparent" ? "navbar-transparent " : "")
+            (this.state.color === "transparent" ? "navbar-transparent " : "")
         }
       >
         <Container fluid>
